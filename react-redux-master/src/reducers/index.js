@@ -2,12 +2,14 @@
 import {combineReducers} from 'redux';
 
 const counter = (state=0, action) => {
-    if(action.type === "INCREMENT") {
-        return state+action.inc; 
-    } else if (action.type === "DECREMENT"){
-        return state-action.inc;
+    switch(action.type) {
+        case "INCREMENT":
+            return state+action.inc; 
+        case "DECREMENT":
+            return state-action.inc;
+        default:
+            return state;
     }
-    return state;
 }
 
 const myReducers = combineReducers({counter});
